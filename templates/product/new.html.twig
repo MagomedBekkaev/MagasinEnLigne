@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!{% endblock %}
+
+{% block body %}
+{{ form(form) }}
+<script>     
+    $(document).ready(function () {         
+        $('#product_categories').select2();   
+    }); 
+</script>
+
+{% endblock %}

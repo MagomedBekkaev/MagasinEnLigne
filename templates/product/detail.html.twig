@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>{{product.nom}}</h1>
+    <p>{{product.description}}</p>
+    <p>{{product.prix}}</p>
+    <p>{{product.quantite}}</p>
+    <a href="{{path('app_delete',{'id': product.id})}}">Supprimer ce produit</a>
+    <a href="{{path('app_edit_product',{'id': product.id})}}">Modifier ce produit</a>
+</div>
+{% endblock %}

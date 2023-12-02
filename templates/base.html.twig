@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+       
+       <!-- Inclure jQuery (obligatoire) -->         
+       <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>         
+       <!-- Inclure Select2 CSS -->         
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />         
+       <!-- Inclure Select2 JS -->         
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+       
+
+        {% block stylesheets %}
+        {% endblock %}
+
+        {% block javascripts %}
+        {% endblock %}
+    </head>
+    <body>
+        {# Vérifier et afficher le message flash d'erreur #}
+        {% set errorFlashes = app.flashes('error') %}
+        {% if errorFlashes is not empty %}
+            <div class="alert-danger">
+                {{ errorFlashes[0] }}
+            </div>
+            {# Masquer le message après 6 secondes (6 seconde) #}
+            <script>
+                setTimeout(function() {
+                    document.querySelector('.alert-danger').style.display = 'none';
+                }, 6000); // Masquer le message après 6 secondes (6000 millisecondes)
+            </script>
+        {% endif %}
+
+        {# Vérifier et afficher le message flash de succès #}
+        {% set successFlashes = app.flashes('success') %}
+        {% if successFlashes is not empty %}
+            <div class="alert-success">
+
+                {{ successFlashes[0] }}
+            </div>
+            {# Masquer le message après 6 secondes (6 seconde) #}
+            <script>
+                setTimeout(function() {
+                    document.querySelector('.alert-success').style.display = 'none';
+                }, 6000); // Masquer le message après 6 secondes (6000 millisecondes)
+            </script>
+        {% endif %}
+        <style>
+            .alert-danger {
+                background-color: rgb(222, 222, 222);
+                padding: 10px;
+                width: 300px;
+                margin: auto;
+                margin-block: 20px;
+                border-radius: 3px;
+                border-left: 10px solid #ff0000;
+            }
+            
+            .alert-success {
+                background-color: rgb(222, 222, 222);
+                padding: 10px;
+                width: 300px;
+                margin: auto;
+                margin-block: 20px;
+                border-radius: 3px;
+                border-left: 10px solid #00ff00;
+            }
+        </style>
+        {% block body %}{% endblock %}
+        
+    </body>
+</html>
